@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     # the authentication data object that comes from the "developer"
     # strategy. In production, we'll swap this strategy for something
     # like 'github' or 'facebook' or some other authentication broker
+    byebug
     pp request.env['omniauth.auth']
 
     # We're going to save the authentication information in the session
@@ -16,7 +17,6 @@ class SessionsController < ApplicationController
     # after redirect, we have access to the returned data
     session[:name] = request.env['omniauth.auth']['info']['name']
     session[:omniauth_data] = request.env['omniauth.auth']
-byebug
     # Ye olde redirect
     redirect_to root_path
   end
